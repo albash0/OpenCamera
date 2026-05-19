@@ -3,23 +3,6 @@ OpenCamera 📸
 
 An open-source, hybrid mechanical, digitally timed Single-Lens Reflex (SLR) camera system built on the ESP32-C3 microcontroller. OpenCamera bridges the gap between classic analog photography and modern DIY electronics by automating the mirror flip, focal-plane shutter speed measurement, and user interface.
 
-Project Architecture
-
-                       +-------------------+
-                       |    ESP32-C3       |
-                       |  (Main Brain)     |
-                       +---------+---------+
-                                 |
-         +-----------------------+-----------------------+
-         |                       |                       |
-+--------+--------+     +--------+--------+     +--------+--------+
-|   TB6612FNG     |     |  ESP32-Servo    |     | Direct Input    |
-|  (DC H-Bridge)  |     | (Hardware Timer)|     | Push Buttons    |
-+--------+--------+     +--------+--------+     +--------+--------+
-         |                       |                       |
-  [Shutter DC Motor]      [Mirror SG90 Servo]     [UP / DOWN Controls]
-
-
 OpenCamera separates its operations into three core subsystems to maximize power efficiency and prevent high-current voltage sags:
 
 The Mirror Loop (Servo-driven): Instantly flips the viewing mirror up (to 75°) out of the optical path before exposure and drops it back down (to 40°) immediately afterward.
